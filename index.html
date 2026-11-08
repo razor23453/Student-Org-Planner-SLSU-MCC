@@ -33,7 +33,8 @@ h1,h2,h3{margin:0;line-height:1.2}
 .dot{width:9px;height:9px;border-radius:50%;background:#f0b429;display:inline-block}
 .dot.live{background:#3ecf8e}.dot.err{background:#ff6b5e}.dot.busy{background:#8ab4ff;animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.35}}
-main{padding:22px 0 44px}
+#app{min-height:100vh;display:flex;flex-direction:column}
+main{padding:22px 0 44px;flex:1}
 .foot{background:var(--navy);color:#fff;border-top:4px solid var(--sky);text-align:center;padding:26px 16px 28px;font-size:14px;line-height:1.9}
 .foot b{font-weight:700}
 .banner{background:var(--amberbg);border:1px solid #f1d28b;color:#6b4300;padding:10px 14px;border-radius:12px;margin-bottom:16px;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
@@ -705,7 +706,7 @@ var App = (function () {
       }).join("") + "</tbody></table></div>";
   }
   function planner() {
-    return '<div class="pagehead"><h2>Event Planner</h2><span class="sub">' + S.state.events.length + ' events</span></div>' +
+    return '<div class="pagehead"><h2>Event Planner</h2><span class="sub">' + S.state.events.length + (S.state.events.length === 1 ? " event" : " events") + '</span></div>' +
       '<div class="toolbar"><div class="f"><label for="q">Search</label><input id="q" type="search" placeholder="Name, venue, committee…" value="' + esc(ui.q) + '"></div>' +
       '<div class="f" style="max-width:200px;min-width:140px"><label for="sf">Status</label><select id="sf">' + opts(L.STATUSES, ui.statusF, "All statuses") + "</select></div>" +
       '<span class="grow"></span><button class="btn ghost" data-act="csv">Export CSV</button><button class="btn orange" data-act="add">+ Add event</button></div><div id="ptable">' + plannerTable() + "</div>";
