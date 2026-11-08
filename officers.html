@@ -356,7 +356,7 @@ var Logic = (function () {
 /* store.js – where the data lives. Demo mode = this browser. Sheets mode = your Google Sheet. */
 var Store = (function () {
   var STUDENT = false; // build step: true on the read-only student page
-  var DEFAULT_URL = "https://script.google.com/macros/s/AKfycby_tfCvEmeLaH0oqPYKz9zRPYR1HPK3FxV9CmO-aKOTS7xMKoLP_IXwGwLp9mwvNxbk/exec"; // build step fills this in so visitors connect automatically
+  var DEFAULT_URL = "https://script.google.com/macros/s/AKfycbyVIve-NYG1PKFK1_snjKRCNTpErx9WetcCV4nvCA1z8qk-4T15jPKUlZYX6x6EizyF/exec"; // build step fills this in so visitors connect automatically
   var DEMO_KEY = "seop.demo.v1", CFG_KEY = "seop.cfg.v1";
   var mem = {};
   function lsGet(k) { try { var v = localStorage.getItem(k); return v == null ? mem[k] || null : v; } catch (e) { return mem[k] || null; } }
