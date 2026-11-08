@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SLSU MCC Student Calendar of Activities</title>
+<title>SLSU MCC Student Organizations Calendar of Activities</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F2A4D'/%3E%3Crect x='10' y='16' width='44' height='38' rx='6' fill='%23fff'/%3E%3Crect x='10' y='16' width='44' height='11' rx='5' fill='%23EB6834'/%3E%3Ccircle cx='24' cy='40' r='4' fill='%231F2A4D'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -581,7 +581,8 @@ var Charts = (function () {
 var App = (function () {
   var MODE = "student"; // build step: "student" = read-only page
   var READONLY = MODE === "student";
-  var BRAND = "SLSU MCC Student Calendar of Activities", STOCK_NAME = "My Student Organization";
+  var OLD_BRAND = "SLSU MCC Student Calendar of Activities", STOCK_NAME = "My Student Organization";
+  var BRAND = READONLY ? "SLSU MCC Student Organizations Calendar of Activities" : OLD_BRAND;
   var esc = Charts.esc, L = Logic, S = Store;
   var ui = { view: "dashboard", filter: { committee: "", category: "" }, calY: 0, calM: 0, q: "", statusF: "", draft: null, typed: { url: "", key: "" } };
   var root, dlg, toastTimer, pendingDel = null;
@@ -616,7 +617,7 @@ var App = (function () {
     if (st.error) banner = '<div class="banner bad" role="alert"><b>Could not talk to the sheet.</b> ' + esc(st.error) + '<button class="btn small ghost" data-act="retry">Try again</button></div>';
     else if (!READONLY && st.mode === "sheets" && !st.editor) banner = '<div class="banner"><b>View only.</b> Officers: enter the password to add or change events.<input id="okey" type="password" class="y" style="max-width:200px" placeholder="Officer password" autocomplete="off" value="' + esc(ui.typed.okey || "") + '"><button class="btn small" data-act="login">Unlock editing</button></div>';
     else if (!READONLY && st.mode === "demo") banner = '<div class="banner"><b>Demo mode.</b> Your changes stay in this browser. To save to Google Sheets, connect it in Settings.<button class="btn small" data-act="tab" data-v="settings">Connect Google Sheets</button></div>';
-    return '<header class="top"><div class="wrap"><div class="brand"><h1>' + esc(!st.settings.orgName || st.settings.orgName === STOCK_NAME ? BRAND : st.settings.orgName) + '</h1><small>Event Planner &amp; Calendar</small></div>' +
+    return '<header class="top"><div class="wrap"><div class="brand"><h1>' + esc(!st.settings.orgName || st.settings.orgName === STOCK_NAME || st.settings.orgName === OLD_BRAND ? BRAND : st.settings.orgName) + '</h1><small>Event Planner &amp; Calendar</small></div>' +
       '<nav class="tabs" aria-label="Main">' + tabs.map(function (t) { return '<button class="tab" data-act="tab" data-v="' + t[0] + '"' + (ui.view === t[0] ? ' aria-current="page"' : "") + ">" + t[1] + "</button>"; }).join("") + "</nav>" +
       '<div class="sync"><span class="dot ' + dot + '"></span>' + esc(text) + (READONLY ? ' <button class="btn small ghost" data-act="retry" style="margin-left:6px">Refresh</button>' : "") + "</div></div></header>" +
       '<main><div class="wrap">' + banner + inner + '</div></main><footer class="foot"><div>Developed by the <b>Information Systems Society</b></div><div>Academic Year 2026–2027 | SLSU–Maasin City Campus</div></footer>';
