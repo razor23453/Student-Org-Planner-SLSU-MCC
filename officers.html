@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SLSU MCC Student Calendar of Activities – Officers</title>
+<title>SLSU MCC Student Organizations Calendar of Activities – Officers</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F2A4D'/%3E%3Crect x='10' y='16' width='44' height='38' rx='6' fill='%23fff'/%3E%3Crect x='10' y='16' width='44' height='11' rx='5' fill='%23EB6834'/%3E%3Ccircle cx='24' cy='40' r='4' fill='%231F2A4D'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -582,7 +582,7 @@ var App = (function () {
   var MODE = "officer"; // build step: "student" = read-only page
   var READONLY = MODE === "student";
   var OLD_BRAND = "SLSU MCC Student Calendar of Activities", STOCK_NAME = "My Student Organization";
-  var BRAND = READONLY ? "SLSU MCC Student Organizations Calendar of Activities" : OLD_BRAND;
+  var BRAND = "SLSU MCC Student Organizations Calendar of Activities";
   var esc = Charts.esc, L = Logic, S = Store;
   var ui = { view: "dashboard", filter: { committee: "", category: "" }, calY: 0, calM: 0, q: "", statusF: "", draft: null, typed: { url: "", key: "" } };
   var root, dlg, toastTimer, pendingDel = null;
